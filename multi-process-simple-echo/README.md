@@ -20,8 +20,9 @@
     - 必须输出 server 的信息 `[srv] server[<ip_address>:<port>] is initializing!`
     - 建议 `accept()` 后输出 client 的信息到 `stdout`
     - 建议通过业务函数来做相关处理
-- server 必须解析来自客户端的请求报文，并添加前缀信息`[ECH_RQT]`回传(尾部包含`\n`)
+- server 必须解析来自客户端的请求报文，并添加前缀信息`[ECH_RQT]`打印出来(尾部包含`\n`)
 - server 必须在原始数据前添加验证码`(veri_code)`回传(尾部包含`\n\0`)
+- server 必须在完成交互后释放connfd
 - server 建议将断开的 client 信息输出到 `stdout`
 - 用 `return()` 退出程序
 
