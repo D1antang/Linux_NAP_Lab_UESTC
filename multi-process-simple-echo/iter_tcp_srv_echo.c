@@ -101,8 +101,22 @@ int main(int argc, char **argv)
             }
             perror("accept error");
             return -1;
+            /*
+            输出 client 的连接信息到 stdout
+            */
+            struct sockaddr_in cliaddr;
+            socklen_t cliaddr_len = sizeof(cliaddr);
+            if(getpeername(connfd, (struct sockaddr *)&cliaddr, &cliaddr_len) < 0)
+            {
+                perror("getpeername error");
+                return -1;
+            }
+            char cli_ip_address[16] = {0};
+            inet_ntop(AF_INET, &cliaddr.sin_addr.s_addr, cli_ip_address, sizeof(cli_ip_address));
+            int cli_port = ntohs(cliaddr.sin_port);
+            printf("[srv] client[%s:%d] is accepted!\n", cli_ip_address, cli_port);
         }
-        printf("[srv] client[%s:%d] is accepted!\n", srv_ip_address, srv_port);
+        
         /*
         server 的业务逻辑
         */
@@ -139,10 +153,19 @@ void srv_biz(int connfd)
         else if(ret == 0)
         {
             /*
-            打印 client 的断开信息到 stdout
+            打印 连接到的client 的断开信息到 stdout
             */
-            
-            return;
+            struct sockaddr_in cliaddr;
+            socklen_t cliaddr_len = sizeof(cliaddr);
+            if(getpeername(connfd, (struct sockaddr *)&cliaddr, &cliaddr_len) < 0)
+            {
+                perror("getpeername error");
+                return -1;
+            }
+            char cli_ip_address[16] = {0};
+            inet_ntop(AF_INET, &cliaddr.sin_addr.s_addr, cli_ip_address, sizeof(cli_ip_address));
+            int cli_port = ntohs(cliaddr.sin_port);
+            printf("[srv] client[%s:%d] is disconnected!\n", cli_ip_address, cli_port);
         }
         else
         {
