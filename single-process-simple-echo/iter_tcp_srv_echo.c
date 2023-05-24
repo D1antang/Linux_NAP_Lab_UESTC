@@ -38,6 +38,7 @@ int main(int argc, char **argv)
     */
 
     struct sigaction act;
+    void handle_sigint(int sig);
     act.sa_handler = handle_sigint;
     sigemptyset(&act.sa_mask);
     act.sa_flags = 0;
