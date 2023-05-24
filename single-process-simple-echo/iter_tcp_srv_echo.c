@@ -182,7 +182,7 @@ void srv_biz(int connfd)
             // 解析请求报文
             char *msg = recv_buf;
             // 打印请求报文
-            printf("[ECH_RQT]%s\n", msg);
+            printf("[ECH_RQT]%s", msg);
             // 添加验证码
             char send_buf[128] = {0};
             sprintf(send_buf, "(%d)%s", srv_veri_code, msg);
