@@ -87,8 +87,5 @@ void cli_biz(int connfd){
         read(connfd, recvbuf, sizeof(recvbuf));
         // 以"[ECH_REP]<msg>"打印到 stdout
         printf("[ECH_REP]%s", recvbuf);
-        // 结束连接
-        close(connfd);
-        printf("[cli] connfd is closed!\n");
     }   
 }
