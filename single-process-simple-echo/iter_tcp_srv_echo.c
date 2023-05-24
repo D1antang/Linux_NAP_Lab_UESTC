@@ -167,6 +167,7 @@ void srv_biz(int connfd)
             inet_ntop(AF_INET, &cliaddr.sin_addr.s_addr, cli_ip_address, sizeof(cli_ip_address));
             int cli_port = ntohs(cliaddr.sin_port);
             printf("[srv] client[%s:%d] is disconnected!\n", cli_ip_address, cli_port);
+            return;
         }
         else
         {
