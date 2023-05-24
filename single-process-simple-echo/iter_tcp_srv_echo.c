@@ -127,7 +127,7 @@ int main(int argc, char **argv)
         */
         close(connfd);
     }
-    
+        close(listenfd);
 }
 
 void handle_sigint(int sig)

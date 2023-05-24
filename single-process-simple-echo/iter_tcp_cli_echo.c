@@ -65,12 +65,12 @@ void cli_biz(int connfd){
         char sendbuf[120];
         memset(sendbuf, 0, sizeof(sendbuf));
         fgets(sendbuf, sizeof(sendbuf), stdin);
-        if(sendbuf[119] != '\0'){
-            perror("input too long\n");
-            return;
+        if(sendbuf[strlen(sendbuf)-1] != '\n'){
+            sendbuf[strlen(sendbuf)-1] = '\0';
+            while (getchar() != '\n');
         }
         // 如果用户输入 EIXT\n\0 则退出
-        if (strncmp(sendbuf, "EXIT\n", 5) == 0)
+        if (strncmp(sendbuf, "EXIT", 4) == 0)
         {
             // 清理相应资源
             close(connfd);
