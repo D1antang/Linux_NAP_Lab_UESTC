@@ -36,13 +36,12 @@ int main(int argc, char **argv)
     /*
     信号处理器的注册初始化
     */
-
-    struct sigaction act;
     void handle_sigint(int sig);
+    struct sigaction act;
     act.sa_handler = handle_sigint;
-    sigemptyset(&act.sa_mask);
     act.sa_flags = 0;
-    sigaction(SIGCHLD, &act, NULL);
+    sigemptyset(&act.sa_mask);
+    sigaction(SIGINT, &act, NULL);
 
     /*
     套接字的创建
@@ -78,7 +77,7 @@ int main(int argc, char **argv)
     server 必须利用 listen() 创建监听套接字后输出到 stdout
     必须输出 server 的信息 [srv] server[<ip_address>:<port>] is initializing!
     */
-    printf("[srv] server[%s:%d] is initializing!\n", srv_ip_address, srv_port);
+    printf("[srv] server[%s:%d][%d] is initializing!\n", srv_ip_address, srv_port,srv_veri_code);
 
 
     /*
@@ -132,6 +131,7 @@ int main(int argc, char **argv)
 
 void handle_sigint(int sig)
 {
+    printf("[srv] SIGINT is coming!\n");
     sigint_flag = 1;
 };
 

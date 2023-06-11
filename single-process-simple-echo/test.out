@@ -1,4 +1,4 @@
-[cli] server[192.168.78.128:2010] is connected!
+[cli] server[127.0.0.1:8888] is connected!
 [ECH_RQT]Te, felissed sanctus bibendumin viverra himenaeos urnamorbi.​
 [ECH_REP](12345)Te, felissed sanctus bibendumin viverra himenaeos urnamorbi.​
 [ECH_RQT]Ultrices adipiscing facer nullamauris liber, volutpatut porttitor dignissim sapien erat duo aliquam interdumdonec.​
@@ -9,8 +9,8 @@
 [ECH_REP](12345)Auctor sedfusce sociis antesuspendisse.​
 [ECH_RQT]Ac nisised liberoduis dui aaenean, clita eum facilisicurabitur iaculis variuscras turpis lacusut rebum.​
 [ECH_REP](12345)Ac nisised liberoduis dui aaenean, clita eum facilisicurabitur iaculis variuscras turpis lacusut rebum.​
-[ECH_RQT]Commodo minulla massa sempermorbi curabitur, no convallis vel faucibusvestibulum egestas aliquam suspendisse arcumorbi.[ECH_REP](12345)Commodo minulla massa sempermorbi curabitur, no convallis vel faucibusvestibulum egestas aliquam suspendisse arcumorbi.[ECH_RQT]
-[ECH_REP](12345)
+[ECH_RQT]Commodo minulla massa sempermorbi curabitur, no convallis vel faucibusvestibulum egestas aliquam suspendisse arcumorbi.
+[ECH_REP](12345)Commodo minulla massa sempermorbi curabitur, no convallis vel faucibusvestibulum egestas aliquam suspendisse arcumorbi.
 [ECH_RQT]
 [ECH_REP](12345)
 [ECH_RQT]Justocras maurisaenean quod elitvivamus elit, ligula luptatum lobortisetiam iriure penatibus facilisis ad.​

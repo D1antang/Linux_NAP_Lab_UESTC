@@ -65,6 +65,10 @@ void cli_biz(int connfd){
         char sendbuf[140];
         memset(sendbuf, 0, sizeof(sendbuf));
         fgets(sendbuf, sizeof(sendbuf), stdin);
+        if(strlen(sendbuf) > 120){
+            sendbuf[120] = '\n';
+            sendbuf[121] = '\0';
+        }
         if(sendbuf[strlen(sendbuf)-1] != '\n'){
             sendbuf[strlen(sendbuf)-1] = '\0';
             while (getchar() != '\n');
@@ -74,6 +78,7 @@ void cli_biz(int connfd){
         {
             // 清理相应资源
             close(connfd);
+            printf("[ECH_RQT]EXIT\n");
             printf("[cli] connfd is closed!\n");
             return;
         }
