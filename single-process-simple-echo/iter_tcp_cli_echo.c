@@ -62,7 +62,7 @@ void cli_biz(int connfd){
     while (1)
     {
         // 获取用户输入的一行字符 ，限制在120字符内
-        char sendbuf[120];
+        char sendbuf[140];
         memset(sendbuf, 0, sizeof(sendbuf));
         fgets(sendbuf, sizeof(sendbuf), stdin);
         if(sendbuf[strlen(sendbuf)-1] != '\n'){

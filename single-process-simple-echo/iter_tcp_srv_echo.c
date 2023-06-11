@@ -144,7 +144,7 @@ void srv_biz(int connfd)
     // 收发数据小循环
     while(1){
         // 接收自定义应用层协议的数据(一个字符数在120以内加上\n\0的字符串)，用read读取
-        char recv_buf[128] = {0};
+        char recv_buf[140] = {0};
         int ret = read(connfd, recv_buf, sizeof(recv_buf));
         if(ret < 0)
         {
