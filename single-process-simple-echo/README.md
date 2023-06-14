@@ -11,11 +11,13 @@
 
 ## 实验服务器程序设计
 
-- server 的程序必须可以从命令参数获取 `ip_address`, `port`, `veri_code`
+- server 的程序必须可以从命令参数获取 `ip_address`, `port`, `veri_code(在100-999范围内)`
 - server 必须安装 `sigint` 信号处理器
     - 用全局变量 `sigint_flag` 标记有无收到 `sigint` 信号
     - 进程起始就应用 `sigaction()` 安装 `sigint` 信号处理器
     - 将请求受理循环的判定条件设定为 `sigint_flag`，检查 `accept()` 返回值，若 `errno` 为 `EINTR` 则被信号中断，重新执行
+- server 必须安装`sigchld`信号处理器
+- 主进程必须在配置`struct sigaction`后设置`sa_flags`为0，然后要求调用在被`SIGCHLD`信号中断后退出并返回异常，然后在`accept()`中检查`errno`是否为`EINTR`，若是则重新执行
 - server 必须利用 `listen()` 创建监听套接字后输出到 `stdout`
     - 必须输出 server 的信息 `[srv] server[<ip_address>:<port>] is initializing!`
     - 建议 `accept()` 后输出 client 的信息到 `stdout`
