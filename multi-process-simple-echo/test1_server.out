@@ -1,0 +1,14 @@
+[srv](10326)[srv_sa](0.0.0.0:2568)[vcd](123) has initialized!
+[src](10326)[cli_sa](10.53.84.248:45866) Client is accepted!
+[chd](10355)[ppid](10326) Child process is created!
+[chd](10355)[cid](114)[ECH_RQT] Maurisaenean dictumst accusam massa malesuada.
+[chd](10355)[cid](114)[ECH_RQT] Magnainteger dolor lacusut auctormauris assum accusam.
+[chd](10355)[cid](114)[ECH_RQT] Possim illum.
+[chd](10355)[cid](114)[ECH_RQT] 
+[chd](10355)[cid](114)[ECH_RQT] Hac elitduis, pharetra varius tation possim venenatis mazim.
+[chd](10355)[ppid](10326)[cli_sa](10.53.84.248:45866) Client is closed!
+[chd](10355)[ppid](10326) Child process is to return!
+[srv](10326)[srv_sa](0.0.0.0:2568)[vcd](123) has initialized!
+[src](10326)[cli_sa](10.53.84.248:45866) Client is accepted!
+[srv](10326)[chd](10355) Child has terminated!
+[srv] SIGINT is coming!

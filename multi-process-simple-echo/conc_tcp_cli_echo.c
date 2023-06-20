@@ -17,7 +17,7 @@ void cli_biz(int connfd, int cid)
         // client 必须接收用户输入的字符(60以内）(尾部包含\n\0)，并以格式[cli](pid)[cid](cid)[ECH_RQT] <msg>输出到 stdout,并将以消息头为2字节的CID，消息体为原始数据的PDU发送给 server
         char buf[1024];
         fgets(buf, 1024, stdin);
-        printf("[cli](%d)[ECH_RQT]%s", getpid(), buf);
+        printf("[cli](%d)[cid](%d)[ECH_RQT] %s", getpid(),cid,buf);
         // 如果输入为EXIT则清理资源(包括关闭connfd)用return()退出(不能发送给server)
         if (strncmp(buf, "EXIT", 4) == 0)
         {
@@ -48,7 +48,7 @@ void cli_biz(int connfd, int cid)
         read(connfd, pduRecv, 1024);
         // 将 server 回射的PDU体输出到 stdout
         // 格式为`[cli](pid)[vcd](vcd)[ECH_REP] <msg>`
-        printf("[cli](%d)[vcd](%d)[ECH_REP]%s", getpid(), ntohs(vcd), pduRecv);
+        printf("[cli](%d)[vcd](%d)[ECH_REP] %s", getpid(), ntohs(vcd), pduRecv);
     }
 }
 

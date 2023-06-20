@@ -41,7 +41,6 @@ void srv_biz(int connfd, int srv_veri_code)
     */
     while (1)
     {
-
         //  server 子进程必须接收请求报文，识别PDU头部的(ClientID,CID)，并以读取字符串的方式提取消息数据(末尾包含\n\0)，增加前缀信息[ECH_RQT]打印出来
         //  客户端请求报文的PDU格式: 2字节的CID
 
@@ -71,7 +70,7 @@ void srv_biz(int connfd, int srv_veri_code)
         else
         {
             // 先将pduHeader转换为cid
-            short cid = ntohs(*(short *)pduHeader);
+            unsigned short cid = ntohs(*(unsigned short *)pduHeader);
             // 读取字符串的方式提取消息数据(末尾包含`\n\0`)
             char buf[1024] = {0};
             read_size = read(connfd, buf, sizeof(buf));
@@ -81,7 +80,7 @@ void srv_biz(int connfd, int srv_veri_code)
                 return;
             }
             // 以读取字符串的方式提取消息数据(末尾包含`\n\0`)，以格式`[chd](pid)[cid](cid)[ECH_RQT] <msg>`打印出来
-            printf("[chd](%hd)[cid](%d)[ECH_RQT] %s", getpid(), cid, buf);
+            printf("[chd](%d)[cid](%d)[ECH_RQT] %s", getpid(), cid, buf);
             // 创建PDU，其中发送的PDU包含2字节的veri_code作为消息头部，以验证客户端的合法性
             short veri_code = htons(srv_veri_code);
             char send_buf[1024] = {0};
@@ -90,7 +89,7 @@ void srv_biz(int connfd, int srv_veri_code)
             // 写入字符串的消息数据
             memcpy(send_buf + 2, buf, strlen(buf));
             // 发送PDU
-            if (write(connfd, send_buf, 1024) < 0)
+            if (write(connfd, send_buf, strlen(buf) + 2) < 0)
             {
                 perror("write error");
                 return;
