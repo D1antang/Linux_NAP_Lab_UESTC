@@ -194,7 +194,7 @@ int main(int argc, char **argv)
     server 必须利用 listen() 创建监听套接字后输出到 stdout
     必须输出 server 的信息 [srv](pid)[srv_sa](<ip_address>:<port>)[vcd](vcd) has initialized!
     */
-    printf("[srv](%d)[srv_sa](%s:%d)[vcd](%d) has initialized!\n", getpid(), srv_ip_address, srv_port, srv_veri_code);
+    printf("[srv](%d)[srv_sa](%s:%d)[vcd](%d) Server has initialized!\n", getpid(), srv_ip_address, srv_port, srv_veri_code);
 
     /*
     请求受理循环
@@ -225,7 +225,7 @@ int main(int argc, char **argv)
             perror("getpeername error");
             return -1;
         }
-        printf("[src](%d)[cli_sa](%s:%d) Client is accepted!\n", getpid(), inet_ntoa(cliaddr.sin_addr), ntohs(cliaddr.sin_port));
+        printf("[srv](%d)[cli_sa](%s:%d) Client is accepted!\n", getpid(), inet_ntoa(cliaddr.sin_addr), ntohs(cliaddr.sin_port));
         handle_client(listenfd, connfd, srv_veri_code);
         close(connfd);
     }
